@@ -3,7 +3,9 @@ package rashsr.residentevil.three.hospitalsafepuzzle;
 import rashsr.residentevil.three.hospitalsafepuzzle.backend.Riddle;
 
 public class Main {
+    public static Riddle r;
+
     public static void main(String[] args){
-        Riddle r = new Riddle();
+        r = new Riddle();
     }
 }

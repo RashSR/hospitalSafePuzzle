@@ -11,6 +11,7 @@ public class Riddle {
     private static String solution;
     private int digits;
     private final String filePath= "resources/data/solution.txt";
+    private Cursor cursor;
 
     public Riddle(){
         String loadedSolution = loadSolution(filePath);
@@ -25,6 +26,7 @@ public class Riddle {
         }
         solution=loadedSolution;
         System.out.println("Created a Puzzle with "+ digits + " digits.");
+        cursor = new Cursor(false, false); //TODO: Aus Konfigdatei auslesen
         startGUI();
     }
     /**
@@ -143,4 +145,7 @@ public class Riddle {
         return toCheck.equals(solution);
     }
 
+    public Cursor getCursor(){
+        return this.cursor;
+    }
 }

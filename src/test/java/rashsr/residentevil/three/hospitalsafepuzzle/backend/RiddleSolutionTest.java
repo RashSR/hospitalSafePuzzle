@@ -3,7 +3,7 @@ package rashsr.residentevil.three.hospitalsafepuzzle.backend;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SolutionTest {
+public class RiddleSolutionTest {
     @Test
     public void checkSolutionTest(){
         Riddle r = new Riddle();

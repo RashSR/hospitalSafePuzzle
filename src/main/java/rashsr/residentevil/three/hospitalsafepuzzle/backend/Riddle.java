@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * All what you want to create the Hospital Puzzle with the Safe in Resident Evil 3 - Nemesis.
  */
 public class Riddle {
-    private String solution;
+    private static String solution;
     private int digits;
     private final String filePath= "resources/data/solution.txt";
 
@@ -23,7 +23,7 @@ public class Riddle {
         }else{
             return;
         }
-        this.solution=loadedSolution;
+        solution=loadedSolution;
         System.out.println("Created a Puzzle with "+ digits + " digits.");
         startGUI();
     }
@@ -35,23 +35,23 @@ public class Riddle {
      * @author      Reinhold Schlager
      * @see         java.lang.String
      */
-    public static boolean onlyNumbers(String solution){
+   static boolean onlyNumbers(String solution){
         if (solution == null || solution.equals("")) {
-            System.out.println("Your String is empty!");
+            System.out.println("[Riddle.onlyNumbers] Your String is empty!");
             return false;
         }
         if(solution.contains("f")||solution.contains("d")){
-            System.out.println("Please use only numbers!");
+            System.out.println("[Riddle.onlyNumbers] Please use only numbers!");
             return false;
         }
         if(solution.contains("6")||solution.contains("7")||solution.contains("8")||solution.contains("9")){
-            System.out.println("Please only use Numbers from 0 to 5!");
+            System.out.println("[Riddle.onlyNumbers] Please only use Numbers from 0 to 5!");
             return false;
         }
         try {
             double d = Double.parseDouble(solution);
         } catch (NumberFormatException nfe) {
-            System.out.println("Please use only numbers!");
+            System.out.println("[Riddle.onlyNumbers] Please use only numbers!");
             return false;
         }
         return true;
@@ -64,7 +64,7 @@ public class Riddle {
      * @author      Reinhold Schlager
      * @see         java.lang.String
      */
-    public static int calcDigits(String solution){
+    static int calcDigits(String solution){
         return solution.length();
     }
     /**
@@ -102,11 +102,45 @@ public class Riddle {
      * @see         rashsr.residentevil.three.hospitalsafepuzzle.io.FileLoader
      */
     public static void saveSolution(String filePath, String newSolution){
+        /*
+        Text des Puzzles:
 
+        It's locked with a
+        number-based lock.
+              \/
+
+        First digit number?
+            >0  1   2   3   4   5   Quit //(Arrow blinks! aber nicht beim bewegen)
+
+        Second digit number?
+            >0  1   2   3   4   5   Quit
+         usw...
+
+         
+         */
     }
-
+    /**
+     * Start the GUI.
+     *
+     * @author      Reinhold Schlager
+     * @see         rashsr.residentevil.three.hospitalsafepuzzle.gui
+     */
     public void startGUI(){
-
+        /*derText = new JLabel("Nachts ist es kälter als Draußen!");
+        derText.setBounds(100,200,200,100);
+        add(derText);*/
+    }
+    /**
+     * Check the input from the user.
+     *
+     * @param  toCheck The solution from the user.
+     * @return      return true if the input is correct
+     * @author      Reinhold Schlager
+     * @see         rashsr.residentevil.three.hospitalsafepuzzle.io.FileLoader
+     */
+    static boolean checkSolution(String toCheck){
+        System.out.println("toCheck: "+toCheck +" Solution: "+solution);
+        return toCheck.equals(solution);
     }
 
 }

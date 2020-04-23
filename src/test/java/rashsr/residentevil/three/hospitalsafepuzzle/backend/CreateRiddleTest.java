@@ -1,4 +1,4 @@
-package rashsr.residentevil.three.hospitalsafepuzzle;
+package rashsr.residentevil.three.hospitalsafepuzzle.backend;
 import org.junit.Assert;
 import org.junit.Test;
 import rashsr.residentevil.three.hospitalsafepuzzle.backend.Riddle;

@@ -1,6 +1,8 @@
 package rashsr.residentevil.three.hospitalsafepuzzle.backend;
 
+import rashsr.residentevil.three.hospitalsafepuzzle.Main;
 import rashsr.residentevil.three.hospitalsafepuzzle.io.FileLoader;
+import rashsr.residentevil.three.hospitalsafepuzzle.gui.GUI;
 
 import java.util.ArrayList;
 
@@ -12,20 +14,23 @@ public class Riddle {
     private int digits;
     private final String filePath= "resources/data/solution.txt";
     private Cursor cursor;
+    private String inputSolution;
+    private static String className = "[Riddle] ";
 
     public Riddle(){
         String loadedSolution = loadSolution(filePath);
         if(onlyNumbers(loadedSolution)) {
             this.digits = calcDigits(loadedSolution);
             if(digits>4){
-                System.out.println("Don't use more than 5 digits!");
+                System.out.println(className+"Don't use more than 5 digits!");
                 return;
             }
         }else{
             return;
         }
+        inputSolution="";
         solution=loadedSolution;
-        System.out.println("Created a Puzzle with "+ digits + " digits.");
+        System.out.println(className+"Created a Puzzle with "+ digits + " digits.");
         cursor = new Cursor(false, false); //TODO: Aus Konfigdatei auslesen
         startGUI();
     }
@@ -128,9 +133,7 @@ public class Riddle {
      * @see         rashsr.residentevil.three.hospitalsafepuzzle.gui
      */
     public void startGUI(){
-        /*derText = new JLabel("Nachts ist es kälter als Draußen!");
-        derText.setBounds(100,200,200,100);
-        add(derText);*/
+        GUI.initGUI();
     }
     /**
      * Check the input from the user.
@@ -140,12 +143,50 @@ public class Riddle {
      * @author      Reinhold Schlager
      * @see         rashsr.residentevil.three.hospitalsafepuzzle.io.FileLoader
      */
-    static boolean checkSolution(String toCheck){
-        System.out.println("toCheck: "+toCheck +" Solution: "+solution);
+    boolean checkSolution(String toCheck){
+        System.out.println(className+"toCheck: "+toCheck +" Solution: "+solution);
         return toCheck.equals(solution);
     }
-
+    /**
+     * Append the next Number to the input String.
+     *
+     * @param  input The next Input from the user.
+     * @return      return true if the input is correct
+     * @author      Reinhold Schlager
+     * @see         java.lang.String
+     */
+    public void appendInputSolution(String input){
+        inputSolution+=input;
+        checkWin();
+    }
+    /**
+     * Check if the Code is correct and do the next steps to delete the Riddle data.
+     *
+     * @author      Reinhold Schlager
+     * @see         java.lang.Boolean
+     */
+    private void checkWin(){
+        if(digits==inputSolution.length()){
+            if(checkSolution(inputSolution)){
+                System.out.println(className+"Code is right!");
+                GUI.changeBackground();
+            }else{
+                System.out.println(className+"You did not input the Code correctly!");
+            }
+        }
+    }
+    /**
+     * Reset the Riddle for the next Time.
+     *
+     * @author      Reinhold Schlager
+     * @see         rashsr.residentevil.three.hospitalsafepuzzle
+     */
+    public void resetRiddle(){
+        //TODO: change input
+        Main.r = new Riddle();
+    }
     public Cursor getCursor(){
         return this.cursor;
     }
+
 }

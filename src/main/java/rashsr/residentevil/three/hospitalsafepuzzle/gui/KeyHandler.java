@@ -1,6 +1,7 @@
 package rashsr.residentevil.three.hospitalsafepuzzle.gui;
 
 import rashsr.residentevil.three.hospitalsafepuzzle.Main;
+import rashsr.residentevil.three.hospitalsafepuzzle.backend.Cursor;
 import rashsr.residentevil.three.hospitalsafepuzzle.backend.CursorPosition;
 
 import java.awt.event.KeyEvent;
@@ -30,16 +31,16 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
             System.exit(0);
-        } else if(e.getKeyCode() == KeyEvent.VK_1){
-            Main.r.appendInputSolution("4");
         }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            System.out.println("left");
+            Main.r.getCursor().turnCursorLeft();
         }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            System.out.println("right");
+            Main.r.getCursor().turnCursorRight();
         }else if(e.getKeyCode() == KeyEvent.VK_ENTER){
-            System.out.println("enter");
-            if(Main.r.getCursor().getCursorPosition()== CursorPosition.FOUR){
-                Main.r.appendInputSolution("4");
+            if(Main.r.getCursor().getCursorPosition()== CursorPosition.QUIT){
+                System.out.println("Good bye and try again!");
+                System.exit(0);
+            }else{
+                Main.r.appendInputSolution(Main.r.getCursor().getCursorPosition().getPositionNumber());
             }
         }
 

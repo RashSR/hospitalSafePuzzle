@@ -1,4 +1,7 @@
 package rashsr.residentevil.three.hospitalsafepuzzle.backend;
+
+import rashsr.residentevil.three.hospitalsafepuzzle.gui.CursorGUI;
+
 /**
  * Creates the Cursor you are moving in the Hospital Safe Puzzle.
  */
@@ -12,8 +15,30 @@ public class Cursor {
         this.blinking = blinking;
         cursorPosition=CursorPosition.ZERO;
         System.out.println("Created a Cursor with jumping: "+jumping+" and blinking: "+blinking+".");
+        CursorGUI.drawCursor();
     }
-
+    /**
+     * Changes the CursorPosition to the right and draws an new one.
+     *
+     * @author      Reinhold Schlager
+     * @see         rashsr.residentevil.three.hospitalsafepuzzle.gui
+     */
+    public void turnCursorRight(){
+        cursorPosition=cursorPosition.toRight(this);
+        CursorGUI.drawCursor();
+        System.out.println("ich male ihn nach rechts "+cursorPosition);
+    }
+    /**
+     * Changes the CursorPosition to the left and draws an new one.
+     *
+     * @author      Reinhold Schlager
+     * @see         rashsr.residentevil.three.hospitalsafepuzzle.gui
+     */
+    public void turnCursorLeft(){
+        cursorPosition=cursorPosition.toLeft(this);
+        CursorGUI.drawCursor();
+        System.out.println("ich male ihn nach links "+cursorPosition);
+    }
     boolean isJumping(){
         return this.jumping;
     }

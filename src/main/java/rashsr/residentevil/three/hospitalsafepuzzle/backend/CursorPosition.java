@@ -3,7 +3,16 @@ package rashsr.residentevil.three.hospitalsafepuzzle.backend;
  * Handles all the Curser Positions.
  */
 public enum CursorPosition {
-    ZERO, ONE, TWO, THREE, FOUR, FIVE, QUIT;
+    ZERO("0"), ONE("1"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), QUIT("Q");
+
+    private String positionNumber;
+
+    private CursorPosition(String positionNumber){
+        this.positionNumber=positionNumber;
+    }
+    public String getPositionNumber(){
+        return this.positionNumber;
+    }
 
     private static CursorPosition[] positions = CursorPosition.values();
     /**

@@ -14,6 +14,12 @@ public class GUI {
      */
     public static void initGUI(){
         initFrame();
+
+
+
+        f.getContentPane().add(backgroundSafe);
+        f.setVisible(true);
+        f.addKeyListener(new KeyHandler());
     }
     /**
      * Initialize the Start-GUI.
@@ -27,9 +33,6 @@ public class GUI {
         f.setResizable(false);
         f.setLayout(null);
         backgroundSafe.setBounds(0, -25, width, height);
-        f.getContentPane().add(backgroundSafe);
-        f.setVisible(true);
-        f.addKeyListener(new KeyHandler());
     }
     /**
      * Change the Background to open the safe.

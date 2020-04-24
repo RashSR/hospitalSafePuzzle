@@ -151,13 +151,16 @@ public class Riddle {
      * Append the next Number to the input String.
      *
      * @param  input The next Input from the user.
-     * @return      return true if the input is correct
      * @author      Reinhold Schlager
      * @see         java.lang.String
      */
     public void appendInputSolution(String input){
-        inputSolution+=input;
-        checkWin();
+        int number = calcDigits(inputSolution);
+        if(number<=digits) {
+            inputSolution += input;
+            System.out.println(number + ". Letter is: " + input);
+            checkWin();
+        }
     }
     /**
      * Check if the Code is correct and do the next steps to delete the Riddle data.
@@ -172,6 +175,12 @@ public class Riddle {
                 GUI.changeBackground();
             }else{
                 System.out.println(className+"You did not input the Code correctly!");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.exit(0);
             }
         }
     }

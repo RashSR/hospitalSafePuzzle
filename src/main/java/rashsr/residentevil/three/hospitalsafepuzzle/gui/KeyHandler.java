@@ -33,6 +33,7 @@ public class KeyHandler implements KeyListener {
             System.exit(0);
         }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
             Main.r.getCursor().turnCursorLeft();
+
         }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             Main.r.getCursor().turnCursorRight();
         }else if(e.getKeyCode() == KeyEvent.VK_ENTER){

@@ -109,22 +109,6 @@ public class Riddle {
      * @see         rashsr.residentevil.three.hospitalsafepuzzle.io.FileLoader
      */
     public static void saveSolution(String filePath, String newSolution){
-        /*
-        Text des Puzzles:
-
-        It's locked with a
-        number-based lock.
-              \/
-
-        First digit number?
-            >0  1   2   3   4   5   Quit //(Arrow blinks! aber nicht beim bewegen)
-
-        Second digit number?
-            >0  1   2   3   4   5   Quit
-         usw...
-
-         
-         */
     }
     /**
      * Start the GUI.

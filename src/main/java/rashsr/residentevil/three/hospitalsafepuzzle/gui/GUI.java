@@ -5,6 +5,7 @@ import javax.swing.*;
 public class GUI {
     private static JFrame f = new JFrame("Resident Evil 3 - Nemesis Hospital Safe Puzzle");
     private static JLabel backgroundSafe = new JLabel(new ImageIcon("resources/pictures/safe_CLOSE.jpg"));
+    private static JLabel chooseDigit = new JLabel(new ImageIcon("resources/pictures/chooseDigits.png"));
     private final static int width = 755, height = 632;
     /**
      * Initialize the GUI.
@@ -14,8 +15,9 @@ public class GUI {
      */
     public static void initGUI(){
         initFrame();
-
-
+        chooseDigit.setBounds(100, 130, 600, 500);
+        backgroundSafe.add(chooseDigit);
+        addComponent(chooseDigit);
 
         f.getContentPane().add(backgroundSafe);
         f.setVisible(true);
@@ -47,6 +49,9 @@ public class GUI {
         f.getContentPane().add(backgroundSafe);
     }
 
+    public static void addComponent(JLabel jl){
+        backgroundSafe.add(jl);
+    }
     /*derText = new JLabel("some ein string");
         derText.setBounds(100,200,200,100);
         add(derText);*/

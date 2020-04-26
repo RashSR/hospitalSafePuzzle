@@ -15,7 +15,7 @@ public class Cursor {
         this.blinking = blinking;
         cursorPosition=CursorPosition.ZERO;
         System.out.println("Created a Cursor with jumping: "+jumping+" and blinking: "+blinking+".");
-        CursorGUI.drawCursor();
+        CursorGUI.initGUICursor();
     }
     /**
      * Changes the CursorPosition to the right and draws an new one.
@@ -25,7 +25,7 @@ public class Cursor {
      */
     public void turnCursorRight(){
         cursorPosition=cursorPosition.toRight(this);
-        CursorGUI.drawCursor();
+        CursorGUI.drawCursor(this);
         System.out.println("ich male ihn nach rechts "+cursorPosition);
     }
     /**
@@ -36,7 +36,7 @@ public class Cursor {
      */
     public void turnCursorLeft(){
         cursorPosition=cursorPosition.toLeft(this);
-        CursorGUI.drawCursor();
+        CursorGUI.drawCursor(this);
         System.out.println("ich male ihn nach links "+cursorPosition);
     }
     boolean isJumping(){
